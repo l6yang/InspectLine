@@ -35,17 +35,17 @@ public class ConnectUtil implements ContactsImpl {
     public static String getIpAddress(String ipAdd) {
         String address;
         if (TextUtils.isEmpty(ipAdd)) {
-            address = Str.ipadd + ":" + Str.port;
+            address = StrImpl.ipadd + ":" + StrImpl.port;
             return address;
         }
         try {
             if (ipAdd.contains(":")) {
                 address = ipAdd;
             } else {
-                address = ipAdd + ":" + Str.port;
+                address = ipAdd + ":" + StrImpl.port;
             }
         } catch (Exception e) {
-            address = ipAdd + ":" + Str.port;
+            address = ipAdd + ":" + StrImpl.port;
         }
         return address;
     }

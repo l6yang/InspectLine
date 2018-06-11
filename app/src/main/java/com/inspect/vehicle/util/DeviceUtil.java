@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class DeviceUtil implements ContactsImpl.Str {
+public class DeviceUtil implements ContactsImpl.StrImpl {
 
     public static void install(Context context, File uriFile) {
         try {

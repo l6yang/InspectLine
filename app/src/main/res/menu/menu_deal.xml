@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_this"
+        android:title="继续使用此身份证" />
+    <item
+        android:id="@+id/item_other"
+        android:title="使用其他身份证" />
+    <item
+        android:id="@+id/item_home"
+        android:title="其他车辆违法处理" />
+</menu>
