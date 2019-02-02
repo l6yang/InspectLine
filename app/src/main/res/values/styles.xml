@@ -9,10 +9,14 @@
         <item name="android:actionMenuTextAppearance">@style/menuStyle</item><!--MenuStyle-->
     </style>
 
-    <style name="baseStyle">
+    <style name="baseStyle" parent="baseFragStyle">
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="baseFragStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:background">@color/color_EF</item>
     </style>
 
     <style name="menuStyle">

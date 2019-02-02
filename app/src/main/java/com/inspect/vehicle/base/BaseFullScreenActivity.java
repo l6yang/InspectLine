@@ -4,11 +4,11 @@ import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
 import com.inspect.vehicle.impl.ContactsImpl;
-import com.loyal.base.ui.activity.ABasicFragActivity;
+import com.loyal.base.ui.activity.ABasicFullScreenActivity;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends ABasicFragActivity implements ContactsImpl {
+public abstract class BaseFullScreenActivity extends ABasicFullScreenActivity implements ContactsImpl {
     private ActionBar actionBar;
 
     @Override

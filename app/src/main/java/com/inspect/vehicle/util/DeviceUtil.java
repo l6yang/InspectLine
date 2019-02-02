@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class DeviceUtil implements ContactsImpl.StrImpl {
+public class DeviceUtil implements ContactsImpl {
 
     public static void install(Context context, File uriFile) {
         try {
@@ -65,7 +65,7 @@ public class DeviceUtil implements ContactsImpl.StrImpl {
      * @param time 默认格式为yyyy-MM-dd HH:mm:ss
      */
     public static long time2LongDate(String time) {
-        return time2LongDate(time, TIME_ALL);
+        return time2LongDate(time, StrImpl.TIME_ALL);
     }
 
     /**

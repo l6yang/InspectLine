@@ -1,20 +1,22 @@
 package com.inspect.vehicle.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Handler;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
 
 import com.inspect.vehicle.R;
-import com.inspect.vehicle.base.BaseActivity;
+import com.inspect.vehicle.base.BaseFullScreenActivity;
 import com.inspect.vehicle.util.FileUtil;
-import com.inspect.vehicle.util.HandlerUtil;
-import com.loyal.base.ui.activity.ABasicPerMissionActivity;
+import com.loyal.base.impl.CommandViewClickListener;
+import com.loyal.rx.impl.MultiplePermissionsListener;
 
 import java.io.File;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-
-public class SplashActivity extends BaseActivity implements ABasicPerMissionActivity.onItemPermissionListener {
+public class SplashActivity extends BaseFullScreenActivity implements MultiplePermissionsListener {
+    private StringBuilder builder = new StringBuilder();
 
     @Override
     protected int actLayoutRes() {
@@ -23,27 +25,49 @@ public class SplashActivity extends BaseActivity implements ABasicPerMissionActi
 
     @Override
     public void afterOnCreate() {
-        requestPermission(IntImpl.MEMORY, this, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE);
+        multiplePermissions(this, PerMission.READ_PHONE_STATE,
+                PerMission.WRITE_EXTERNAL_STORAGE, PerMission.READ_EXTERNAL_STORAGE);
     }
 
     @Override
-    public void onItemPermissionResult(int reqCode, boolean successful) {
-        if (successful) {
-            File apkFile = new File(Path.APK, StrImpl.APK_NAME);
-            FileUtil.deleteFile(apkFile);
-            FileUtil.createFileSys();
-            Intent intent = new Intent();
-            intent.setClass(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            showToast("请开启存储权限！");
-            HandlerUtil.postDelayed(new Handler(), new Runnable() {
+    public void onMultiplePermissions(@NonNull String permissionName, boolean successful, boolean shouldShow) {
+        permissionName = replaceNull(permissionName);
+        System.out.println(permissionName + "：" + successful);
+        if (!successful) {
+            switch (permissionName) {
+                case PerMission.READ_PHONE_STATE:
+                    builder.append("手机状态权限、");
+                    break;
+                case PerMission.WRITE_EXTERNAL_STORAGE:
+                    builder.append("存储权限、");
+                    break;
+            }
+        }
+        if (!TextUtils.isEmpty(builder)) {
+            showPermissionNextDialog("请开启" + builder.toString(), new CommandViewClickListener() {
                 @Override
-                public void run() {
+                public void onViewClick(DialogInterface dialog, View view, Object tag) {
+                    if (null != dialog)
+                        dialog.dismiss();
+                    startActivity(new Intent(Settings.ACTION_SETTINGS)); //直接进入手机中设置界面
                     finish();
                 }
-            });
+            }, false);
+            return;
+        }
+        switch (permissionName) {
+            case PerMission.READ_PHONE_STATE:
+                break;
+            case PerMission.WRITE_EXTERNAL_STORAGE:
+                File apkFile = new File(Path.APK, StrImpl.APK_NAME);
+                FileUtil.deleteFile(apkFile);
+                FileUtil.createFileSys();
+                Intent intent = getIntent();
+                System.out.println(null == intent);
+                //hasIntentParams(true);
+                startActivityByAct(MainActivity.class);
+                finish();
+                break;
         }
     }
 }

@@ -9,10 +9,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 //文件系统工具类
-public class FileUtil implements ContactsImpl.Path {
+public class FileUtil implements ContactsImpl {
 
     public static void createFileSys() {
-        for (String path : ARRAY) {
+        for (String path : Path.ARRAY) {
             File file = new File(path);
             createFiles(file);
         }
