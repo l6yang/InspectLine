@@ -1,6 +1,6 @@
 package com.inspect.vehicle.util;
 
-import com.inspect.vehicle.impl.ContactsImpl;
+import com.inspect.vehicle.impl.IContactsImpl;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,7 +9,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 //文件系统工具类
-public class FileUtil implements ContactsImpl {
+public class FileUtil implements IContactsImpl {
+
+    public static final String apkName="veh_inspect.apk";
 
     public static void createFileSys() {
         for (String path : Path.ARRAY) {

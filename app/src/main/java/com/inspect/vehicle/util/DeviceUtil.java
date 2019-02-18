@@ -8,14 +8,14 @@ import android.os.Build;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 
-import com.inspect.vehicle.impl.ContactsImpl;
+import com.inspect.vehicle.impl.IContactsImpl;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class DeviceUtil implements ContactsImpl {
+public class DeviceUtil implements IContactsImpl {
 
     public static void install(Context context, File uriFile) {
         try {

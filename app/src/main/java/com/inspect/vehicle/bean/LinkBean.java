@@ -15,6 +15,7 @@ public class LinkBean {
     private String packName;
     private String actUrl;
     private String title;
+    private String flag;
 
     public String getText() {
         return text;
@@ -62,5 +63,13 @@ public class LinkBean {
 
     public void setPackName(String packName) {
         this.packName = packName;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }

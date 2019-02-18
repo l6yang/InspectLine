@@ -1,17 +1,13 @@
 <resources>
     <string name="app_name">智能查验终端</string>
 
-    <!-- Strings related to login -->
     <string name="prompt_account">账号</string>
     <string name="prompt_password">密码</string>
     <string name="prompt_ip">IP地址</string>
     <string name="action_sign_in">登录</string>
     <string name="action_register">注册</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
     <string name="empty" />
     <string name="refresh">刷新</string>
+    <string name="check_update">检查更新</string>
+    <string name="notify_update">有新版本，点击下载更新</string>
 </resources>

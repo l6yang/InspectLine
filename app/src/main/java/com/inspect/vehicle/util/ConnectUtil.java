@@ -2,14 +2,14 @@ package com.inspect.vehicle.util;
 
 import android.text.TextUtils;
 
-import com.inspect.vehicle.impl.ContactsImpl;
+import com.inspect.vehicle.impl.IContactsImpl;
 
 import java.net.ConnectException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
-public class ConnectUtil implements ContactsImpl {
+public class ConnectUtil implements IContactsImpl {
 
     public static String getError(Throwable throwable) {
         if (null == throwable)

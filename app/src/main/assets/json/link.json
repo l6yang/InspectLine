@@ -3,39 +3,57 @@
     "text": "警情接收",
     "url": "com.police.terminal.activity.assist.qzqd.AlarmReceiverActivity",
     "icon": "asset:///images/link/icon_alarm_receiver.png",
+    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
+    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "title": "警情接收"
   },
   {
     "text": "警情上报",
     "url": "com.police.terminal.activity.assist.qzqd.AlarmUploadActivity",
     "icon": "asset:///images/link/icon_alarm_upload.png",
+    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
+    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "title": "警情上报"
   },
   {
     "text": "执勤考核",
     "url": "com.police.terminal.activity.assist.qzqd.RankingActivity",
-    "urlAdmin": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "icon": "asset:///images/link/icon_duty_ranking.png",
+    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
+    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "title": "执勤考核"
   },
   {
     "text": "值班信息",
     "url": "com.police.terminal.activity.assist.qzqd.DutyTaskActivity",
-    "urlAdmin": "com.police.terminal.activity.assist.qzqd.DutyTaskAdminActivity",
     "icon": "asset:///images/link/icon_duty_task.png",
+    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
+    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "title": "值班信息"
   },
   {
     "text": "工作量上传",
     "url": "com.police.terminal.activity.assist.qzqd.WorkloadActivity",
     "icon": "asset:///images/link/icon_duty_summary.png",
+    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
+    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "title": "工作量上传"
   },
   {
     "text": "设备定位",
     "url": "com.police.terminal.activity.assist.qzqd.GpsLocationActivity",
-    "urlAdmin": "com.police.terminal.activity.assist.qzqd.GpsLocationAdminActivity",
     "icon": "asset:///images/link/icon_location_gps.png",
+    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
+    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "title": "设备定位"
+  },
+  {
+    "text": "检查更新",
+    "url": "checkUpdate",
+    "icon": "asset:///images/link/icon_location_gps.png",
+    "packName": "",
+    "actUrl": "checkUpdate",
+    "title": "检查更新",
+    "flag": "checkUpdate"
   }
 ]

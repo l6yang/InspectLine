@@ -2,7 +2,7 @@ package com.inspect.vehicle.impl;
 
 import android.os.Environment;
 
-public interface ContactsImpl {
+public interface IContactsImpl {
     final class StrImpl {
         public static final String ipadd = "";
         public static final String port = "";

@@ -3,12 +3,12 @@ package com.inspect.vehicle.base;
 import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 
-import com.inspect.vehicle.impl.ContactsImpl;
+import com.inspect.vehicle.impl.IContactsImpl;
 import com.loyal.base.ui.activity.ABasicFragActivity;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends ABasicFragActivity implements ContactsImpl {
+public abstract class BaseActivity extends ABasicFragActivity implements IContactsImpl {
     private ActionBar actionBar;
 
     @Override
