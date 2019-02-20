@@ -2,6 +2,8 @@ package com.inspect.vehicle.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -38,7 +40,7 @@ public class SplashActivity extends BaseFullScreenActivity implements MultiplePe
                 case PerMission.READ_PHONE_STATE:
                     builder.append("手机状态权限、");
                     break;
-                case PerMission.WRITE_EXTERNAL_STORAGE:
+                case PerMission.READ_EXTERNAL_STORAGE:
                     builder.append("存储权限、");
                     break;
             }
@@ -58,16 +60,50 @@ public class SplashActivity extends BaseFullScreenActivity implements MultiplePe
         switch (permissionName) {
             case PerMission.READ_PHONE_STATE:
                 break;
-            case PerMission.WRITE_EXTERNAL_STORAGE:
-                File apkFile = new File(Path.APK, StrImpl.APK_NAME);
-                FileUtil.deleteFile(apkFile);
-                FileUtil.createFileSys();
-                Intent intent = getIntent();
-                System.out.println(null == intent);
-                //hasIntentParams(true);
-                startActivityByAct(MainActivity.class);
-                finish();
+            case PerMission.READ_EXTERNAL_STORAGE:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    boolean hasInstallPermission = getPackageManager().canRequestPackageInstalls();
+                    if (!hasInstallPermission) {
+                        showPermissionNextDialog("请勾选安装应用权限", new CommandViewClickListener() {
+                            @Override
+                            public void onViewClick(DialogInterface dialog, View view, Object tag) {
+                                //注意这个是8.0新API
+                                Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.setData(Uri.fromParts("package", getPackageName(), null));
+                                startActivity(intent);
+                                finish();
+                                /*Intent mIntent = new Intent();
+                                mIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                if (Build.VERSION.SDK_INT >= 9) {
+                                    mIntent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                    mIntent.setData(Uri.fromParts("package", getPackageName(), null));
+                                } else if (Build.VERSION.SDK_INT <= 8) {
+                                    mIntent.setAction(Intent.ACTION_VIEW);
+                                    mIntent.setClassName("com.android.settings", "com.android.setting.InstalledAppDetails");
+                                    mIntent.putExtra("com.android.settings.ApplicationPkgName", getPackageName());
+                                }
+                                startActivityForResult(mIntent, IntImpl.reqInstall);*/
+                            }
+                        }, false);
+                        return;
+                    }
+                    start2Next();
+                } else {
+                    start2Next();
+                }
                 break;
         }
+    }
+
+    private void start2Next() {
+        File apkFile = new File(Path.APK, StrImpl.APK_NAME);
+        FileUtil.deleteFile(apkFile);
+        FileUtil.createFileSys();
+        Intent intent = getIntent();
+        System.out.println(null == intent);
+        //hasIntentParams(true);
+        startActivityByAct(MainActivity.class);
+        finish();
     }
 }

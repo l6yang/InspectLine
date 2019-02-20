@@ -14,6 +14,7 @@ public interface IContactsImpl {
         public static final int MEMORY = 300;
         public static final int LOCATION = 301;
         public static final int REGISTER = 200;
+        public static final int reqInstall = 22;
     }
 
     /**

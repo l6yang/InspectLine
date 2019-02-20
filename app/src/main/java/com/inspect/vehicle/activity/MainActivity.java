@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     }
 
     private void checkUpdate() {
-        String ipAdd = "192.168.20.96:8080";
+        String ipAdd = "192.168.0.110:8080";
         RxProgressSubscriber<String> subscriber = new RxProgressSubscriber<>(this, ipAdd);
         subscriber.setSubscribeListener(this);
         RxUtil.rxExecute(subscriber.checkUpdate(DeviceUtil.apkVersion(this)), subscriber);
