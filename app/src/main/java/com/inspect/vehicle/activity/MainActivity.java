@@ -84,6 +84,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             String apkUrl = replaceNull(resultBean.getObj());
             showUpdateDialog(apkUrl);
         } catch (Exception e) {
+            e.printStackTrace();
             onError(what, tag, e);
         }
     }
@@ -108,7 +109,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         showToast("已推送至状态栏下载更新");
-                        DownloadService.startAction(MainActivity.this, intentBuilder, true);
+                        if (!TextUtils.equals(State.UPDATE_ING, State.UPDATE)) {
+                            State.UPDATE=State.UPDATE_ING;
+                            DownloadService.startAction(MainActivity.this, intentBuilder, true);
+                        }
                     }
                 });
         normalDialog.setNeutralButton("下次再说",

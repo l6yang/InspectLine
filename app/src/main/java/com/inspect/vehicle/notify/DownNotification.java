@@ -21,7 +21,7 @@ public class DownNotification {
         final Bitmap picture = BitmapFactory.decodeResource(res, R.mipmap.ic_launcher);
         final String title = res.getString(R.string.app_name);
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_TAG)
-                //.setDefaults(Notification.DEFAULT_SOUND)
+                .setDefaults(Notification.DEFAULT_ALL)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(current)

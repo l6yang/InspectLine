@@ -81,16 +81,20 @@ public class DownloadService extends IntentService implements IContactsImpl, Dow
             String size = DeviceUtil.getDataSize(download.getCurrentFileSize());
             String total = DeviceUtil.getDataSize(download.getTotalFileSize());
             String current = String.format("%s / %s", size, total);
+            State.UPDATE=State.UPDATE_ING;
             DownNotification.notify(this, progress, current);
         } else if (TextUtils.equals("complete", state)) {
             DownNotification.cancel(this);
             File file = new File(Path.APK, FileUtil.apkName);
             if (!file.exists()) {
+                State.UPDATE=State.UPDATE_FAIL;
                 NotifyNotification.notify(this, "安装失败，文件不存在");
             } else {
+                State.UPDATE=State.UPDATE_SUCCESS;
                 DeviceUtil.install(this, file);
             }
         } else {
+            State.UPDATE=State.UPDATE_FAIL;
             DownNotification.cancel(this);
             NotifyNotification.notify(this, "下载失败");
         }

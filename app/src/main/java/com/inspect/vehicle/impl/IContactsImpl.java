@@ -25,4 +25,11 @@ public interface IContactsImpl {
         public static final String APK = HOME + "apk/";
         public static final String[] ARRAY = {APK};
     }
+
+    final class State {
+        public static String UPDATE = "";
+        public static final String UPDATE_ING = "doing";
+        public static final String UPDATE_SUCCESS = "success";
+        public static final String UPDATE_FAIL = "fail";
+    }
 }
