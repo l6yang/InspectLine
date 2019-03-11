@@ -3,8 +3,13 @@ package com.inspect.vehicle.activity;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -14,9 +19,9 @@ import com.inspect.vehicle.adapter.LinkAdapter;
 import com.inspect.vehicle.base.BaseActivity;
 import com.inspect.vehicle.bean.LinkBean;
 import com.inspect.vehicle.bean.ResultBean;
+import com.inspect.vehicle.bean.UpdateBean;
 import com.inspect.vehicle.libs.rxjava.RxProgressSubscriber;
 import com.inspect.vehicle.service.DownloadService;
-import com.loyal.kit.DeviceUtil;
 import com.loyal.kit.GsonUtil;
 import com.loyal.rx.RxUtil;
 import com.loyal.rx.impl.RxSubscriberListener;
@@ -24,8 +29,11 @@ import com.loyal.rx.impl.RxSubscriberListener;
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener, RxSubscriberListener<String> {
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @BindView(R.id.gridView)
     GridView gridView;
+    private static final int whatUpdate = 2;
 
     @Override
     protected int actLayoutRes() {
@@ -34,6 +42,8 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void afterOnCreate() {
+        toolbar.setTitle(R.string.app_name);
+        setSupportActionBar(toolbar);
         setActionBack(false);
         gridView.setAdapter(new LinkAdapter(this, "json/link.json", true));
         gridView.setOnItemClickListener(this);
@@ -48,11 +58,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             //packageName = "com.inspect.vehicle";
             //actUrl=".activity.SplashActivity";
             actUrl = actUrl.startsWith(".") ? actUrl.substring(1) : actUrl;
-            String flag = replaceNull(linkBean.getFlag());
-            if (TextUtils.equals("checkUpdate", flag)) {
-                checkUpdate();
-                return;
-            }
             ComponentName component = new ComponentName(packageName, String.format("%s.%s", packageName, actUrl));
             Intent intentJump = new Intent("android.intent.action.VIEW");
             intentJump.putExtra("idNumber", "513826199707088933");
@@ -66,55 +71,88 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_setting, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_setting:
+                startActivityByAct(SettingActivity.class);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        checkUpdate();
+    }
+
     private void checkUpdate() {
-        String ipAdd = "192.168.0.110:8080";
-        RxProgressSubscriber<String> subscriber = new RxProgressSubscriber<>(this, ipAdd);
-        subscriber.setSubscribeListener(this);
-        RxUtil.rxExecute(subscriber.checkUpdate(DeviceUtil.apkVersion(this)), subscriber);
+        RxProgressSubscriber<String> subscriber = new RxProgressSubscriber<>(this, getIpAdd());
+        subscriber.setWhat(whatUpdate).setSubscribeListener(this);
+        RxUtil.rxExecute(subscriber.checkUpdate("2"), subscriber);
     }
 
     @Override
     public void onResult(int what, Object tag, String result) {
         try {
-            ResultBean<String> resultBean = (ResultBean<String>) GsonUtil.json2BeanObject(result, ResultBean.class, String.class);
-            if (null == resultBean || !TextUtils.equals("1", resultBean.getCode())) {
-                showDialog("暂未发现新版本！");
-                return;
+            switch (what) {
+                case whatUpdate:
+                    if (TextUtils.isEmpty(result)) {
+                        return;
+                    }
+                    ResultBean<UpdateBean> resultBean = (ResultBean<UpdateBean>) GsonUtil.json2BeanObject(result, ResultBean.class, UpdateBean.class);
+                    if (null == resultBean) {
+                        return;
+                    }
+                    String code = resultBean.getCode();
+                    if (!TextUtils.equals("1", code)) {
+                        return;
+                    }
+                    UpdateBean updateBean = resultBean.getData();
+                    String apkUrl = null == updateBean ? "" : replaceNull(updateBean.getDatapath());
+                    showUpdateDialog(apkUrl);
+                    break;
             }
-            String apkUrl = replaceNull(resultBean.getObj());
-            showUpdateDialog(apkUrl);
         } catch (Exception e) {
-            e.printStackTrace();
             onError(what, tag, e);
         }
     }
 
     @Override
     public void onError(int what, Object tag, Throwable e) {
-        showErrorDialog("检查更新失败", e);
+        switch (what) {
+            case whatUpdate:
+
+                break;
+        }
     }
 
     private void showUpdateDialog(String apkUrl) {
         apkUrl = replaceNull(apkUrl);
         if (!apkUrl.endsWith(".apk")) {
-            showDialog("无效的更新下载地址");
             return;
         }
         intentBuilder.putExtra("apkUrl", apkUrl);
         AlertDialog.Builder normalDialog = new AlertDialog.Builder(this);
         normalDialog.setTitle("检测到新版本").setMessage("是否下载安装？");
-        normalDialog.setPositiveButton("立即更新",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        showToast("已推送至状态栏下载更新");
+        normalDialog.setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                showToast("已推送至状态栏下载更新");
                         if (!TextUtils.equals(State.UPDATE_ING, State.UPDATE)) {
-                            State.UPDATE=State.UPDATE_ING;
+                            State.UPDATE = State.UPDATE_ING;
                             DownloadService.startAction(MainActivity.this, intentBuilder, true);
                         }
-                    }
-                });
+            }
+        });
         normalDialog.setNeutralButton("下次再说",
                 new DialogInterface.OnClickListener() {
                     @Override

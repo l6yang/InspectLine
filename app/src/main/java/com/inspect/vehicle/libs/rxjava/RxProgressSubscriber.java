@@ -3,7 +3,6 @@ package com.inspect.vehicle.libs.rxjava;
 import android.content.Context;
 
 import com.loyal.rx.BaseRxServerSubscriber;
-import com.loyal.rx.BaseRxSubscriber;
 import com.loyal.rx.RetrofitManage;
 import com.loyal.rx.impl.RxSubscriberListener;
 
@@ -39,22 +38,17 @@ public class RxProgressSubscriber<T> extends BaseRxServerSubscriber<T> implement
     }
 
     @Override
-    public BaseRxSubscriber<T> showProgressDialog(boolean showProgressDialog) {
-        return super.showProgressDialog(true);
-    }
-
-    @Override
     public void createServer(RetrofitManage retrofitManage) {
         server = retrofitManage.createServer(ObservableServer.class);
     }
 
     @Override
     public String serverNameSpace() {
-        return "mwm";
+        return "video";
     }
 
     @Override
-    public Observable<String> checkUpdate(String apkVersion) {
-        return server.checkUpdate(apkVersion);
+    public Observable<String> checkUpdate(String applx) {
+        return server.checkUpdate(applx);
     }
 }

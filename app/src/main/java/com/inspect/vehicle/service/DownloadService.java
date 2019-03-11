@@ -91,7 +91,7 @@ public class DownloadService extends IntentService implements IContactsImpl, Dow
                 NotifyNotification.notify(this, "安装失败，文件不存在");
             } else {
                 State.UPDATE = State.UPDATE_SUCCESS;
-                com.inspect.vehicle.util.DeviceUtil.install(this, file);
+                 DeviceUtil.install(this, file);
             }
         } else {
             State.UPDATE = State.UPDATE_FAIL;

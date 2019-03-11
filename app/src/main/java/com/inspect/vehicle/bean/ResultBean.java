@@ -1,30 +1,20 @@
 package com.inspect.vehicle.bean;
 
+import com.google.gson.annotations.SerializedName;
 import com.loyal.kit.PatternBean;
 
 public class ResultBean<T> extends PatternBean<T> {
+
+    /**
+     * code : -99
+     * mess : org．apache．ibatis．binding．BindingException： Invalid bound statement （not found）： com．zlkj．video．dao．AndroidDao．applogin
+     * data : null
+     */
+
     private String code;
+    @SerializedName(value = "mess",alternate = "msg")
     private String message;
-    private T obj;
-
-    public ResultBean() {
-    }
-
-    public ResultBean(T obj) {
-        this.code = "1";
-        this.obj = obj;
-    }
-
-    public ResultBean(String code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-
-    public ResultBean(String code, String message, T obj) {
-        this.code = code;
-        this.message = message;
-        this.obj = obj;
-    }
+    private T data;
 
     public String getCode() {
         return code;
@@ -32,10 +22,6 @@ public class ResultBean<T> extends PatternBean<T> {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public void setCode(int code) {
-        setCode(String.valueOf(code));
     }
 
     public String getMessage() {
@@ -46,11 +32,11 @@ public class ResultBean<T> extends PatternBean<T> {
         this.message = message;
     }
 
-    public T getObj() {
-        return obj;
+    public T getData() {
+        return data;
     }
 
-    public void setObj(T obj) {
-        this.obj = obj;
+    public void setData(T data) {
+        this.data = data;
     }
 }

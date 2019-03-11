@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/baseStyle"
+    android:orientation="vertical"
+    tools:context=".activity.AddressActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        app:divider="@drawable/divider_vertical"
+        app:showDividers="middle">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edit_ipAdd"
+            style="@style/edit_match_style"
+            android:background="@null"
+            android:hint="@string/hint_ipAdd"
+            android:inputType="textEmailAddress" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edit_port"
+            style="@style/edit_match_style"
+            android:background="@null"
+            android:hint="@string/port"
+            android:inputType="number"
+            android:maxLines="5" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <Button
+        android:id="@+id/submitView"
+        style="@style/buttonStyle"
+        android:layout_marginTop="30dp"
+        android:onClick="onClick"
+        android:text="@string/submit" />
+</android.support.v7.widget.LinearLayoutCompat>

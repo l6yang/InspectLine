@@ -4,10 +4,11 @@ import android.os.Environment;
 
 public interface IContactsImpl {
     final class StrImpl {
-        public static final String ipadd = "";
+        public static final String ipadd = "192.168.0.127";
         public static final String port = "";
         public static final String TIME_ALL = "yyyy-MM-dd HH:mm:ss";
         public static final String APK_NAME = "veh_inspect.apk";//不要更改此文件名，否则安装时会找不到文件
+        public static final String BASEURL = "baseUrl";
     }
 
     final class IntImpl {

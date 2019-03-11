@@ -46,14 +46,5 @@
     "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "title": "设备定位"
-  },
-  {
-    "text": "检查更新",
-    "url": "checkUpdate",
-    "icon": "asset:///images/link/icon_location_gps.png",
-    "packName": "",
-    "actUrl": "checkUpdate",
-    "title": "检查更新",
-    "flag": "checkUpdate"
   }
 ]

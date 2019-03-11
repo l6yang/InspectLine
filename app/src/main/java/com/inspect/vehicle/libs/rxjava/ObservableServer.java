@@ -7,7 +7,14 @@ import retrofit2.http.POST;
 
 public interface ObservableServer {
 
+    /**
+     * 检查更新
+     *
+     * @param applx 1:执法记录仪
+     *              2:中间键
+     *              default=2
+     */
     @FormUrlEncoded
-    @POST("action.do?method=" + "checkUpdate")
-    Observable<String> checkUpdate(@Field("apkVersion") String apkVersion);
+    @POST("app.do?method=" + "getAppInfo")
+    Observable<String> checkUpdate(@Field("applx") String applx);
 }

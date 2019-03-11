@@ -10,4 +10,11 @@
     <string name="refresh">刷新</string>
     <string name="check_update">检查更新</string>
     <string name="notify_update">有新版本，点击下载更新</string>
+    <string name="setting">设 置</string>
+    <string name="version">版本号</string>
+    <string name="server">接入地址</string>
+    <string name="hint_ipAdd">如：192.168.XXX.XXX</string>
+    <string name="digits_all">0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM</string>
+    <string name="submit">提 交</string>
+    <string name="port">端口号(默认9080)</string>
 </resources>
