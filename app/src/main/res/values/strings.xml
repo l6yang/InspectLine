@@ -13,8 +13,17 @@
     <string name="setting">设 置</string>
     <string name="version">版本号</string>
     <string name="server">接入地址</string>
+    <string name="login">登 录</string>
+    <string name="register">注 册</string>
+    <string name="hint_account">用户名称(仅限字母和数字)</string>
+    <string name="hint_password">用户密码</string>
     <string name="hint_ipAdd">如：192.168.XXX.XXX</string>
     <string name="digits_all">0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM</string>
     <string name="submit">提 交</string>
     <string name="port">端口号(默认9080)</string>
+    <string name="syry"><![CDATA[使用人员\u3000]]></string>
+    <string name="sybm"><![CDATA[使用部门\u3000]]></string>
+    <string name="sbbh"><![CDATA[设备编号\u3000]]></string>
+    <string name="cjzbh">采集站编号</string>
+
 </resources>

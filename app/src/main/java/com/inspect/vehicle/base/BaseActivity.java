@@ -59,6 +59,6 @@ public abstract class BaseActivity extends ABasicFragActivity implements IContac
     }
 
     public String getIpAdd() {
-        return PreferUtil.getString(getApplicationContext(), StrImpl.BASEURL, StrImpl.ipadd);
+        return PreferUtil.getString(getApplicationContext(), StrImpl.BASEURL, StrImpl.ip_default);
     }
 }

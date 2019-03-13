@@ -20,6 +20,10 @@
         <activity
             android:name=".activity.SettingActivity"
             android:label="@string/setting" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

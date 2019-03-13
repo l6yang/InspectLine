@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/baseStyle"
+    style="@style/baseActStyle"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 

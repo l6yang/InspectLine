@@ -1,50 +1,18 @@
 [
   {
-    "text": "警情接收",
+    "text": "开始查验",
     "url": "com.police.terminal.activity.assist.qzqd.AlarmReceiverActivity",
     "icon": "asset:///images/link/icon_alarm_receiver.png",
     "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "title": "警情接收"
+    "title": "开始查验"
   },
   {
-    "text": "警情上报",
-    "url": "com.police.terminal.activity.assist.qzqd.AlarmUploadActivity",
-    "icon": "asset:///images/link/icon_alarm_upload.png",
+    "text": "查验结束",
+    "url": "com.police.terminal.activity.assist.qzqd.AlarmReceiverActivity",
+    "icon": "asset:///images/link/icon_alarm_receiver.png",
     "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
     "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "title": "警情上报"
-  },
-  {
-    "text": "执勤考核",
-    "url": "com.police.terminal.activity.assist.qzqd.RankingActivity",
-    "icon": "asset:///images/link/icon_duty_ranking.png",
-    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "title": "执勤考核"
-  },
-  {
-    "text": "值班信息",
-    "url": "com.police.terminal.activity.assist.qzqd.DutyTaskActivity",
-    "icon": "asset:///images/link/icon_duty_task.png",
-    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "title": "值班信息"
-  },
-  {
-    "text": "工作量上传",
-    "url": "com.police.terminal.activity.assist.qzqd.WorkloadActivity",
-    "icon": "asset:///images/link/icon_duty_summary.png",
-    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "title": "工作量上传"
-  },
-  {
-    "text": "设备定位",
-    "url": "com.police.terminal.activity.assist.qzqd.GpsLocationActivity",
-    "icon": "asset:///images/link/icon_location_gps.png",
-    "packName": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "actUrl": "com.police.terminal.activity.assist.qzqd.RankingAdminActivity",
-    "title": "设备定位"
+    "title": "查验结束"
   }
 ]

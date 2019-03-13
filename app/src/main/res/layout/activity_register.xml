@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/baseActStyle"
+    android:orientation="vertical"
+    tools:context=".activity.RegisterActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:divider="@drawable/divider_vertical"
+            app:showDividers="middle">
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal"
+                app:showDividers="middle">
+
+                <TextView
+                    style="@style/two_text_wrap_style_left"
+                    android:text="@string/sbbh"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_sbbh"
+                    style="@style/text_input_weight_style_right"
+                    android:layout_height="wrap_content"
+                    android:background="@null" />
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal"
+                app:showDividers="middle">
+
+                <TextView
+                    style="@style/two_text_wrap_style_left"
+                    android:text="@string/sybm"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:divider="@drawable/divider_vertical"
+                    app:showDividers="middle">
+
+                    <RelativeLayout style="@style/spin_parent_match_style">
+
+                        <Spinner
+                            android:id="@+id/spin_sybm_1st"
+                            style="@style/spin_style" />
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/spin_parent_match_style">
+
+                        <Spinner
+                            android:id="@+id/spin_sybm_2nd"
+                            style="@style/spin_style" />
+                    </RelativeLayout>
+                </android.support.v7.widget.LinearLayoutCompat>
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal"
+                app:showDividers="middle">
+
+                <TextView
+                    style="@style/two_text_wrap_style_left"
+                    android:text="@string/syry"
+                    android:textStyle="bold" />
+
+                <RelativeLayout style="@style/spin_parent_weight_style">
+
+                    <Spinner
+                        android:id="@+id/spin_syry"
+                        style="@style/spin_style" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:divider="@drawable/divider_horizontal"
+                app:showDividers="middle">
+
+                <TextView
+                    style="@style/two_text_wrap_style_left"
+                    android:text="@string/cjzbh"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edit_cjzbh"
+                    style="@style/edit_match_style"
+                    android:layout_weight="2"
+                    android:inputType="number"
+                    android:maxLength="4" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <Button
+                android:id="@id/submitView"
+                style="@style/buttonStyle"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/drawable_register"
+                android:text="@string/register"
+                android:textColor="@color/src_tab_press" />
+        </android.support.v7.widget.LinearLayoutCompat>
+    </ScrollView>
+
+</android.support.v7.widget.LinearLayoutCompat>

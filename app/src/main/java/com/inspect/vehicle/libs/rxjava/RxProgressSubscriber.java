@@ -48,7 +48,32 @@ public class RxProgressSubscriber<T> extends BaseRxServerSubscriber<T> implement
     }
 
     @Override
+    public Observable<String> login(String yhdh, String yhmm, String sbbh, String ver) {
+        return server.login(yhdh, yhmm, sbbh, ver);
+    }
+
+    @Override
+    public Observable<String> getGlbm(String bz) {
+        return server.getGlbm(bz);
+    }
+
+    @Override
+    public Observable<String> getSyry(String glbm) {
+        return server.getSyry(glbm);
+    }
+
+    @Override
+    public Observable<String> register(String beanJson) {
+        return server.register(beanJson);
+    }
+
+    @Override
     public Observable<String> checkUpdate(String applx) {
         return server.checkUpdate(applx);
+    }
+
+    @Override
+    public Observable<String> sendMq(String beanJson) {
+        return server.sendMq(beanJson);
     }
 }

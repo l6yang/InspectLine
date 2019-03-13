@@ -10,7 +10,6 @@ import java.io.IOException;
 
 //文件系统工具类
 public class FileUtil implements IContactsImpl {
-
     public static final String apkName="veh_inspect.apk";
 
     public static void createFileSys() {

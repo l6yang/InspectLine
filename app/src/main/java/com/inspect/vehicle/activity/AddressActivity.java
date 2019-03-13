@@ -42,7 +42,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        String ipAdd = PreferUtil.getString(this, "editIpAdd", StrImpl.ipadd);
+        String ipAdd = PreferUtil.getString(this, "editIpAdd", StrImpl.ip_default);
         String port = PreferUtil.getString(this, "editPort", "");
         editIpAdd.setText(ipAdd);
         editIpAdd.setSelection(ipAdd.length());

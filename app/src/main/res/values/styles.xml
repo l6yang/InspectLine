@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="baseStyle" parent="baseFragStyle">
+    <style name="baseActStyle" parent="baseFragStyle">
         <item name="android:fitsSystemWindows">true</item>
     </style>
 
@@ -95,5 +95,53 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@drawable/drawable_button</item>
         <item name="android:textSize">@dimen/text_sp_18</item>
+    </style>
+    <style name="text_match_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="two_text_wrap_style_left" parent="text_match_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/text_sp_16</item>
+    </style>
+
+    <style name="two_text_weight_style_left" parent="two_text_wrap_style_left">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="text_input_match_style_right" parent="text_match_style">
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:background">@drawable/shape_input</item>
+        <item name="android:textSize">@dimen/text_sp_18</item>
+        <item name="android:minHeight">45dp</item>
+    </style>
+
+    <style name="text_input_weight_style_right" parent="text_input_match_style_right">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">2</item>
+    </style>
+    <style name="spin_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">45dp</item>
+    </style>
+
+    <style name="spin_parent_match_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/shape_spinner</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="spin_parent_weight_style" parent="spin_parent_match_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">2</item>
     </style>
 </resources>
